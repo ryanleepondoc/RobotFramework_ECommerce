@@ -25,26 +25,21 @@ Valid Login
 Invalid Login
     [Tags]      1002
     Given user is at the login page
-    When user performs login with credentials   ${VALID_USER}     wrongpassword
+    When user performs login with credentials   ${VALID_USER}     ${INVALID_PASS}
     Then login should fail
 
 
-Login with Empty Password
-    [Tags]      1003
-    Given user is at the login page
-    When user performs login with credentials   ${VALID_USER}    ${EMPTY}
-    Then an inline error message is shown in    password
-
-
-Login with Empty Password
-    [Tags]      1004
-    Given user is at the login page
-    When user performs login with credentials   ${EMPTY}    ${VALID_PASS}
-    Then an inline error message is shown in    username
-
-
 Login with Empty Credentials
-    [Tags]      1005
+    [Tags]      1003
+    [Template]    Empty Credentials
+    ${VALID_USER}       ${EMPTY}                password
+    ${EMPTY}            ${VALID_PASS}           username
+    ${EMPTY}            ${EMPTY}                both fields
+
+
+*** Keywords ***
+Empty Credentials
+    [Arguments]    ${username}      ${password}     ${invalid_field}
     Given user is at the login page
-    When user performs login with credentials   ${EMPTY}    ${EMPTY}
-    Then an inline error message is shown in    both fields
+    When user performs login with credentials   ${username}    ${password}
+    Then an inline error message is shown in    ${invalid_field}
