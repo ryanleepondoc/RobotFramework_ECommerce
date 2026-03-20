@@ -2,6 +2,7 @@
 Resource                        ../steps/login_page_steps.robot
 Resource                        ../steps/product_catalogue_page_steps.robot
 Resource                        ../resources/common.robot
+Library                         DataDriver      ../test_data/empty_login_credentials.csv
 
 Test Setup                      Start Test      ${browser}
 Test Teardown                   End Test
@@ -29,16 +30,14 @@ Invalid Login
     Then login should fail
 
 
-Login with Empty Credentials
+Login with Empty Credentials    ${username}      ${password}     ${invalid_field}
     [Tags]      1003
-    [Template]    Empty Credentials
-    ${VALID_USER}       ${EMPTY}                password
-    ${EMPTY}            ${VALID_PASS}           username
-    ${EMPTY}            ${EMPTY}                both fields
+    [Template]    Attempt to Logon with Empty Credentials
+    ${username}      ${password}     ${invalid_field}
 
 
 *** Keywords ***
-Empty Credentials
+Attempt to Logon with Empty Credentials
     [Arguments]    ${username}      ${password}     ${invalid_field}
     Given user is at the login page
     When user performs login with credentials   ${username}    ${password}
