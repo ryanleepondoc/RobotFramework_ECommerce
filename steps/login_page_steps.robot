@@ -33,3 +33,10 @@ an inline error message is shown in
     ELSE
         fail    "Invalid input field"
     END
+
+
+user is already logged in
+    [Arguments]     ${username}     ${password}
+    user is at the login page
+    user performs login with credentials    ${username}     ${password}
+    login should be successful
