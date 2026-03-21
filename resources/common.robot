@@ -7,13 +7,19 @@ Start Test
     [Arguments]     ${browser}
 
     # Create ChromeOptions object
-    ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
+    IF    '${browser}' == 'edge'
+        ${options}=    Evaluate    sys.modules['selenium.webdriver'].EdgeOptions()    sys
+    ELSE IF    '${browser}' == 'firefox'
+        ${options}=    Evaluate    sys.modules['selenium.webdriver'].FirefoxOptions()    sys
+    ELSE
+        ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
+    END
 
     # Add arguments to ChromeOptions
-    call method    ${chrome_options}    set_capability    pageLoadStrategy    eager
+    call method    ${options}    set_capability    pageLoadStrategy    eager
 
     # Open browser with proper options object
-    open browser    about:blank    ${browser}    options=${chrome_options}
+    open browser    about:blank    ${browser}    options=${options}
     maximize browser window
 
 
