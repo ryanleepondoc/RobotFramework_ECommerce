@@ -6,7 +6,6 @@ Library                     SeleniumLibrary
 ${product} =                    ${None}
 ${product_container} =          //section[@id='products']
 ${toast_add_item_success} =     //div[@id='toast-container']//div[@role='alert']
-${my_cart_button} =             //button[@routerlink='/dashboard/cart']
 
 
 *** Keywords ***
@@ -20,7 +19,3 @@ Add Item To Cart
     click element    ${add_item_buttom}
     wait until element is visible    ${toast_add_item_success}
     wait until element is not visible    ${toast_add_item_success}
-
-
-Go to My Cart
-    click element       ${my_cart_button}
