@@ -1,15 +1,15 @@
 *** Settings ***
-Library                     SeleniumLibrary
+Library                                 SeleniumLibrary
+Variables                               ../../config/config.py
 
 *** Variables ***
-${url} =                    https://rahulshettyacademy.com/client
-${username_text_box} =      id=userEmail
-${password_text_box} =      id=userPassword
-${login_button} =           //input[@name='login']
-${success_login_toast_locator} =    //div[contains(@class, 'toast-title')]
-${success_login_toast_message} =    Login Successfully
-${failed_login_toast_locator} =     //div[contains(@class, 'toast-message')]
-${failed_login_toast_message} =     Incorrect email or password.
+${username_text_box} =                  id=userEmail
+${password_text_box} =                  id=userPassword
+${login_button} =                       //input[@name='login']
+${success_login_toast_locator} =        //div[contains(@class, 'toast-title')]
+${success_login_toast_message} =        Login Successfully
+${failed_login_toast_locator} =         //div[contains(@class, 'toast-message')]
+${failed_login_toast_message} =         Incorrect email or password.
 ${username_required_inline_locator} =   css=input#userEmail + div.invalid-feedback > div
 ${username_required_inline_message} =   *Email is required
 ${password_required_inline_locator} =   css=input#userPassword + div.invalid-feedback > div

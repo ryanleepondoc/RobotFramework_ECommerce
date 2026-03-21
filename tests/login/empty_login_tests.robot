@@ -2,14 +2,12 @@
 Resource                        ../../steps/login_page_steps.robot
 Resource                        ../../steps/product_catalogue_page_steps.robot
 Resource                        ../../resources/common.robot
+Variables                       ../../config/config.py
 Library                         DataDriver      ../../test_data/empty_login_credentials.csv
 
 Test Setup                      Start Test      ${browser}
 Test Teardown                   End Test
-
 #robot -d results tests/login_tests.robot
-*** Variables ***
-${browser} =                    chrome
 
 *** Test Cases ***
 Login with ${invalid_field} empty

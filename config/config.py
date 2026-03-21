@@ -1,0 +1,5 @@
+url = "https://rahulshettyacademy.com/client"
+browser = "chrome"
+valid_email = "robertdoe@gmail.com"
+valid_password = "Password@1"
+invalid_password = "wrongpassword"
